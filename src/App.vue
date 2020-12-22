@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <todos v-model="todos"></todos>
+<!--    <todos v-model="todos"></todos>-->
+<!--    <todos></todos>-->
+<!--    <todos></todos>-->
+<!--    <button @click="addTodo">Ajouter une tache</button>-->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Todos from './components/Todos.vue'
 
 export default {
+  data () {
+    return {
+      todos: [{
+        name: "Demo",
+        completed: true
+      }]
+    }
+  },
   name: 'App',
   components: {
-    HelloWorld
+    Todos
+  },
+  methods: {
+    addTodo () {
+      this.todos.push({
+          name: "Jean",
+          completed: false
+        }
+      )
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
